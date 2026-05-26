@@ -1,9 +1,18 @@
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 import env from "./config/env.js";
 import "./models/index.js";
 import routes from "./routes/index.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const clientDistPath = path.resolve(__dirname, "../../client/dist");
+const clientIndexPath = path.join(clientDistPath, "index.html");
+const hasClientBuild = fs.existsSync(clientIndexPath);
 
 const app = express();
 
@@ -24,7 +33,7 @@ app.use(
 );
 app.use(morgan("dev"));
 
-app.get("/", (_request, response) => {
+app.get("/api", (_request, response) => {
   response.json({
     success: true,
     message: "Nearby Helper Service Finder API",
@@ -32,6 +41,26 @@ app.get("/", (_request, response) => {
 });
 
 app.use("/api", routes);
+
+if (hasClientBuild) {
+  app.use(express.static(clientDistPath));
+
+  app.get("*", (request, response, next) => {
+    if (request.path.startsWith("/api")) {
+      next();
+      return;
+    }
+
+    response.sendFile(clientIndexPath);
+  });
+} else {
+  app.get("/", (_request, response) => {
+    response.json({
+      success: true,
+      message: "Nearby Helper Service Finder API",
+    });
+  });
+}
 
 app.use((error, _request, response, _next) => {
   console.error("Server error:", error.message);
