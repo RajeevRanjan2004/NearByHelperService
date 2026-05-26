@@ -1,0 +1,12 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nearbyhelper-favicon" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1D6F6D" />
+      <stop offset="1" stop-color="#D66B2D" />
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="52" height="52" rx="18" fill="url(#nearbyhelper-favicon)" />
+  <path d="M20 31.5L32 20L44 31.5V45C44 46.1 43.1 47 42 47H35V38H29V47H22C20.9 47 20 46.1 20 45V31.5Z" fill="#FFF7EF" />
+  <path d="M42 17C38.1 17 35 20.1 35 24C35 29 42 35.6 42 35.6C42 35.6 49 29 49 24C49 20.1 45.9 17 42 17Z" fill="#FFF7EF" />
+  <circle cx="42" cy="24" r="2.5" fill="#D66B2D" />
+</svg>

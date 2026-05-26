@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --color-sand-50: #f6f0e8;
+  --color-sand-100: #ece2d3;
+  --color-ink-900: #162126;
+  --color-muted-600: #5a6b72;
+  --color-teal-700: #1d6f6d;
+  --color-rust-500: #d66b2d;
+  --color-rust-700: #994415;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-w-80 bg-[radial-gradient(circle_at_top_left,rgba(251,176,59,0.35),transparent_32%),linear-gradient(180deg,#f7f2ea_0%,#f3f7f4_100%)] text-ink-900 antialiased;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+  }
+
+  header,
+  footer,
+  .print-hidden {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  .print-surface {
+    box-shadow: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    background: #ffffff !important;
+  }
+}
