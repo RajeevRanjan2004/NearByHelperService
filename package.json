@@ -1,11 +1,12 @@
 {
-  "name": "nearby-helper-service-finder",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "client": "npm --prefix client run dev",
-    "server": "npm --prefix server run dev",
-    "build": "npm --prefix client run build",
-    "seed": "npm --prefix server run seed"
-  }
+    "name":  "nearby-helper-service-finder",
+    "version":  "0.1.0",
+    "private":  true,
+    "scripts":  {
+                    "client":  "npm --prefix client run dev",
+                    "server":  "npm --prefix server run dev",
+                    "build":  "npm run install:client \u0026\u0026 npm --prefix client run build",
+                    "seed":  "npm --prefix server run seed",
+                    "install:client":  "npm ci --prefix client --include=dev"
+                }
 }
